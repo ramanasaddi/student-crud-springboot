@@ -3,7 +3,6 @@ package com.springboot.example.student.controller;
 import com.springboot.example.student.model.Student;
 import com.springboot.example.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +18,7 @@ public class StudentController {
     @RequestMapping(value="/listStudent", method = RequestMethod.GET)
     public String listStudent(Model model){
         List<Student> studentList = studentService.getStudents();
+        model.addAttribute("students", studentList);
         return "/student/listStudent";
     }
 
